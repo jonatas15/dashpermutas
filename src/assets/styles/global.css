@@ -1,0 +1,15 @@
+/* src/assets/styles/global.css */
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+/* Importar a fonte Exo 2 */
+@font-face {
+    font-family: 'Exo 2';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('/fonts/exo2-v8-latin-100.eot');
+    src: local('Exo 2 Thin'), local('Exo2-Thin'),
+         url('/fonts/Exo2-VariableFont_wght.ttf') format('truetype');
+  }
+  
+  /* Resto do seu CSS global */
