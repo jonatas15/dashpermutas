@@ -6,18 +6,15 @@ import HomeView from "./views/HomeView.vue";
 <template>
   <!-- Navigation -->
   <nav
-    class="navbar navbar-expand-lg navbar-light bg-dark shadow fixed-top text-white"
-    style="
-      background-color: rgba(0, 0, 0, 0.4) !important;
-      color: white !important;
-    "
+    class="navbar navbar-expand-lg navbar-light shadow fixed-top text-white"
+    :style="{ backgroundColor: navBarColor }"
   >
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="@/assets/logo.png" alt="Logo" />
       </a>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler bg-white"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarResponsive"
@@ -49,13 +46,38 @@ import HomeView from "./views/HomeView.vue";
     <HomeView />
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      navBarColor: 'rgba(0, 0, 0, .4) !important', // Cor de fundo inicial
+    };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.changeNavBarColor);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.changeNavBarColor);
+  },
+  methods: {
+    changeNavBarColor() {
+      // Verifica a posição do scroll para determinar a cor de fundo da navbar
+      if (window.scrollY > 400) {
+        this.navBarColor = 'black !important'; // Cor de fundo quando a página é rolada para baixo
+      } else {
+        this.navBarColor = 'rgba(0, 0, 0, .4) !important'; // Cor de fundo quando a página é rolada para cima
+      }
+    },
+  },
+};
+</script>
+
 <style>
-/* .masthead {
-  height: 100vh;
-  min-height: 500px;
-  background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-} */
+navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  transition: background-color 0.3s ease;
+}
 </style>

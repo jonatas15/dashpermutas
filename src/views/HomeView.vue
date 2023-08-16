@@ -8,9 +8,9 @@
     <!-- Page Content -->
     <section class="py-5">
       <div class="container">
-        <h2 class="titulo-de-section pb-5">
-          <div style="float: left; font-size: 40px" class="px-3">
-            <i class="fas fa-search"></i>
+        <h2 class="titulo-de-section pb-5 text-black">
+          <div class="px-3 float-start">
+            <i class="fas fa-2x fa-search"></i>
           </div>
           <div style="float: left">
             <strong>Pesquisar os</strong><br />
@@ -27,6 +27,9 @@
           </div> -->
           <div class="mt-3 text-center">
             <h5>Pesquisa avançada</h5>
+            <!-- <div>
+              <p>Estamos em um dispositivo {{ isMobile ? 'móvel' : 'desktop' }} e {{ slidescont }}.</p>
+            </div> -->
           </div>
           <SearchFormAdvanced />
         </div>
@@ -71,15 +74,27 @@
     -->
     <section class="py-5">
       <div class="container">
+        <h2 class="titulo-de-section pb-5 my-3 mb-3 text-black">
+          <div class="px-3 float-start">
+            <i class="fa-solid fa-2x fa-house-chimney"></i>
+          </div>
+          <div style="float: left">
+            <strong>Pesquisar os</strong><br />
+            Imóveis disponíveis
+          </div>
+        </h2>
         <div class="carousel-container">
           <swiper
             :modules="modules"
-            :slides-per-view="3"
-            :loop="true"
+            :slides-per-view="slidescont"
+            :space-between="-40"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
             >
-            <!-- ref="swiper" -->
+            <!-- 
+              :loop="true"
+              ref="swiper" 
+            -->
             <SwiperSlide v-for="property in properties" :key="property.id" class="px-5">
               <div class="card w-100">
                 <img :src="property.image" class="card-img-top" alt="...">
@@ -194,13 +209,16 @@ export default {
         },
       ],
       swiperOptions: {
-        slidesPerView: this.isMobile ? 1 : 4,
       },
-      isMobile: false, // Defina isso de acordo com a lógica de detecção
+      isMobile: window.innerWidth <= 768,
       swiper: null,
+      slidescont: this.isMobile ? 1 : 4,
     };
   },
   methods: {
+    updateIsMobile() {
+      this.isMobile = window.innerWidth <= 768;
+    },
     handleSearch(searchCriteria) {
       // Simulação: substitua isso com a lógica real de busca
       // Aqui, você pode fazer uma chamada à API ou manipular os dados localmente
@@ -222,7 +240,17 @@ export default {
     
   },
   created() {
+    window.addEventListener('resize', this.updateIsMobile);
+    if(this.isMobile) {
+      this.slidescont = 1;
+    } else {
+      this.slidescont = 4;
+    }
     // this.init();
+  },
+  destroyed() {
+    // Remova o listener quando o componente for destruído
+    window.removeEventListener('resize', this.updateIsMobile);
   },
 };
 </script>

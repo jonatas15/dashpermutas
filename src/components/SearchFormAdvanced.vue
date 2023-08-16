@@ -2,7 +2,7 @@
   <form @submit.prevent="submitForm">
     <div class="row">
 
-      <div class="col-5">
+      <div class="col-md-5 col-sm-12 my-1">
         <select id="suaPermuta" class="form-control" v-model="suaPermuta">
           <option value="">Informe aqui o tipo da sua permuta</option>
           <option value="casa">Casa</option>
@@ -10,8 +10,8 @@
           <!-- Adicione mais opções de tipo de imóvel, se necessário -->
         </select>
       </div>
-      <div class="col-1">com ></div>
-      <div class="col-5">
+      <div class="col-md-1 col-sm-12 my-1">com ></div>
+      <div class="col-md-5 col-sm-12 my-1">
         <select id="trocaPor" class="form-control" v-model="trocaPor">
           <option value="">Informe aqui o perfil do imóvel que estás buscando</option>
           <option value="bairro1">Bairro 1</option>
@@ -19,7 +19,7 @@
           <!-- Adicione mais opções de bairros, se necessário -->
         </select>
       </div>
-      <div class="col-1">
+      <div class="col-md-1 col-sm-12 my-1">
         
         <button class="btn btn-success w-100" type="submit">Buscar</button>
       </div>

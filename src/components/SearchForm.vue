@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-row">
-      <div class="form-group col">
+    <div class="row">
+      <div class="col-md-3 col-sm-12 my-1">
         <label for="propertyType">Tipo do Imóvel</label>
         <select
           id="propertyType"
@@ -13,7 +13,7 @@
           <!-- Adicione mais opções de tipo de imóvel, se necessário -->
         </select>
       </div>
-      <div class="form-group col">
+      <div class="col-md-3 col-sm-12 my-1">
         <label for="neighborhood">Bairro</label>
         <select
           id="neighborhood"
@@ -25,7 +25,7 @@
           <!-- Adicione mais opções de bairros, se necessário -->
         </select>
       </div>
-      <div class="form-group col">
+      <div class="col-md-3 col-sm-12 my-1">
         <label for="value">Valor</label>
         <select id="value" class="form-control" v-model="selectedValue">
           <option value="100000">Até R$100,000</option>
@@ -33,7 +33,7 @@
           <!-- Adicione mais opções de valores, se necessário -->
         </select>
       </div>
-      <div class="form-group col">
+      <div class="col-md-3 col-sm-12 my-1">
         <br />
         <button class="btn btn-success w-100" type="submit">Buscar</button>
       </div>
