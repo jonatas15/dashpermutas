@@ -85,7 +85,6 @@
         </h2>
         <div class="carousel-container">
           <swiper
-            :modules="modules"
             :slides-per-view="slidescont"
             :space-between="-40"
             @swiper="onSwiper"
@@ -111,7 +110,79 @@
         </div>
       </div>
     </section>
-  
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6 green-card text-white">
+            <div class="row align-middle py-4">
+              <div class="col texto-1 align-middle">
+                <span class="align-middle">Clique e fale com a gente<br>
+                diretamente pelo whatsapp</span></div>
+              <div class="col">(55) 99912 8466</div>
+            </div>
+          </div>
+          <div class="col-3"></div>
+        </div>
+      </div>
+    </section>
+    <section class="py-5">
+      <div class="container">
+        <h2 class="titulo-de-section pb-5 my-3 mb-3 text-black">
+          <div class="px-3 float-start">
+            <i class="fa-solid fa-2x fa-house-chimney"></i>
+          </div>
+          <div style="float: left">
+            <strong>Pesquisar os</strong><br />
+            Imóveis disponíveis
+          </div>
+        </h2>
+        <div class="carousel-container">
+          <swiper
+            :slides-per-view="slidescont"
+            :space-between="-40"
+            @swiper="onSwiper2"
+            @slideChange="onSlideChange2"
+            >
+            <!-- 
+              :loop="true"
+              ref="swiper" 
+            -->
+            <SwiperSlide v-for="property in properties" :key="property.id" class="px-5">
+              <div class="card w-100">
+                <img :src="property.image" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ property.title }}</h5>
+                  <p class="card-text">{{ property.description }}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </SwiperSlide>
+            <div class="swiper-button-prev" @click="anteriorSlide2"></div>
+            <div class="swiper-button-next" @click="proximoSlide2"></div>
+          </swiper>
+        </div>
+      </div>
+    </section>
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-10">
+            <div class="banner-container">
+              <div class="banner-overlay">
+                <img
+                  src="@/assets/banner-img-2.png"
+                  class="img-s"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 <script>
@@ -126,7 +197,7 @@ import SearchForm from "@/components/SearchForm.vue";
 import SearchFormAdvanced from "@/components/SearchFormAdvanced.vue";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide, useSwiper } from "swiper/vue";
-import { Navigation } from 'swiper/modules';
+// import { Navigation } from 'swiper/modules';
 
 import "swiper/css";
 import 'swiper/css/navigation';
@@ -150,14 +221,22 @@ export default {
     const onSwiper = (swiper) => {
       console.log(swiper);
     };
+    const onSwiper2 = (swiper) => {
+      console.log(swiper);
+    };
     const onSlideChange = () => {
+      console.log('slide change');
+    };
+    const onSlideChange2 = () => {
       console.log('slide change');
     };
     return {
       onSwiper,
+      onSwiper2,
       onSlideChange,
+      onSlideChange2,
       // swiper
-      modules: [Navigation],
+      // modules: [Navigation],
     };
   },
   data() {
@@ -212,6 +291,7 @@ export default {
       },
       isMobile: window.innerWidth <= 768,
       swiper: null,
+      swiper2: null,
       slidescont: this.isMobile ? 1 : 4,
     };
   },
@@ -231,13 +311,21 @@ export default {
     onSwiper(swiper) {
       this.swiper = swiper;
     },
+    onSwiper2(swiper) {
+      this.swiper2 = swiper;
+    },
     proximoSlide() {
       this.swiper.slideNext();
     },
     anteriorSlide() {
       this.swiper.slidePrev();
-    }
-    
+    },
+    proximoSlide2() {
+      this.swiper2.slideNext();
+    },
+    anteriorSlide2() {
+      this.swiper2.slidePrev();
+    },
   },
   created() {
     window.addEventListener('resize', this.updateIsMobile);
@@ -261,5 +349,55 @@ export default {
   color: #626262;
   /* font-weight: 800; */
   font-family: "Open Sans";
+}
+.green-card {
+  width: 638px;
+  height: 111px;
+  border-radius: 40px;
+  background-color: #05925b;
+}
+.green-card .texto-1 {
+  font-size: 18px;  
+  line-height: 25px;
+  color: #ffffff;
+  font-weight: 400;
+  font-family: "Open Sans";
+  text-align: right;
+  filter: drop-shadow(-2.034px 4.568px 2px rgba(0,0,0,0.31));
+}
+.banner-overlay {
+  position: relative;
+  display: inline-block;
+}
+
+.banner-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.671;
+  /* border-radius: 15px; */
+  background-color: #20372e;
+}
+.banner-container {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* margin-top: 4%; */
+  position: relative;
+  border-radius: 15px;
+  background-image: url('@assets');
+}
+.banner-container img{
+  filter: drop-shadow(0px 14px 20px rgba(0,0,0,0.45));
+  object-fit: none;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 </style>
