@@ -183,6 +183,17 @@
         </div>
       </div>
     </section>
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-12 py-4 px-2" v-for="item in parapermuta" :key="item.id">
+            <div class="card para-permuta">
+              <img :src="item.img" alt="" style="height: 100%; object-fit: cover;border-radius: 15px !important;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 <script>
@@ -287,6 +298,23 @@ export default {
           description: "Descrição 7",
         },
       ],
+      parapermuta: [
+        {
+          id: 1,
+          titulo: 'Casas para permuta',
+          img: new URL('@/assets/casas.png', import.meta.url).href
+        },
+        {
+          id: 2,
+          titulo: 'Apartamentos para permuta',
+          img: new URL('@/assets/apartamentos.png', import.meta.url).href
+        },
+        {
+          id: 3,
+          titulo: 'Terrenos para permuta',
+          img: new URL('@/assets/terrenos.png', import.meta.url).href
+        },
+      ],
       swiperOptions: {
       },
       isMobile: window.innerWidth <= 768,
@@ -368,6 +396,7 @@ export default {
 .banner-overlay {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 
 .banner-overlay::before {
@@ -399,5 +428,12 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
+  height: 400px;
+}
+.para-permuta {
+  opacity: 0.722;
+  height: 596px;
+  border-radius: 15px;
+  background-color: #20372e;
 }
 </style>
