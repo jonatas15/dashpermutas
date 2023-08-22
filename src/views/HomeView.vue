@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <main>
+  <main style="margin-bottom: 150px;">
     <Banner />
     <!-- Page Content -->
     <section class="py-5">
@@ -79,8 +79,8 @@
             <i class="fa-solid fa-2x fa-house-chimney"></i>
           </div>
           <div style="float: left">
-            <strong>Pesquisar os</strong><br />
-            Imóveis disponíveis
+            <strong>Imóveis Residenciais</strong><br />
+            em Destaque:
           </div>
         </h2>
         <div class="carousel-container">
@@ -113,16 +113,38 @@
     <section class="py-5">
       <div class="container">
         <div class="row">
-          <div class="col-3"></div>
-          <div class="col-6 green-card text-white">
-            <div class="row align-middle py-4">
-              <div class="col texto-1 align-middle">
+          <div class="col-md-3"></div>
+          <div class="col-md-6 green-card text-white">
+            <div class="row py-4">
+              <div class="col-md-6 texto-1 py-2 px-4">
                 <span class="align-middle">Clique e fale com a gente<br>
                 diretamente pelo whatsapp</span></div>
-              <div class="col">(55) 99912 8466</div>
+              <div class="col-md-6 py-3">
+                <div class="whatsapp-button w-75">
+                  <a class="" href="https://api.whatsapp.com/send?phone=SEU_NUMERO_DE_TELEFONE" target="_blank">
+                    <div class="row">
+                      <div class="col-2 py-2" style="
+                        background-color: white;
+                        color: black;
+                        border: 3px solid white;
+                        width: 40px;
+                        margin-top: -1px;
+                        margin-bottom: -1px;
+                        border-top-left-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                      ">
+                        <i class="fab fa-whatsapp"></i> 
+                      </div>
+                      <div class="col-10 py-2">
+                        (55) 99912 8466
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-3"></div>
+          <div class="col-md-3"></div>
         </div>
       </div>
     </section>
@@ -130,11 +152,11 @@
       <div class="container">
         <h2 class="titulo-de-section pb-5 my-3 mb-3 text-black">
           <div class="px-3 float-start">
-            <i class="fa-solid fa-2x fa-house-chimney"></i>
+            <i class="fa-solid fa-2x fa-building"></i>
           </div>
           <div style="float: left">
-            <strong>Pesquisar os</strong><br />
-            Imóveis disponíveis
+            <strong>Imóveis Comerciais</strong><br />
+            em Destaque
           </div>
         </h2>
         <div class="carousel-container">
@@ -170,13 +192,31 @@
           <div class="col-1"></div>
           <div class="col-10">
             <div class="banner-container">
-              <div class="banner-overlay">
-                <img
-                  src="@/assets/banner-img-2.png"
-                  class="img-s"
-                  alt=""
-                />
-              </div>
+              <div class="mask"></div>
+              <img
+              src="@/assets/banner-img-2.png"
+              class="img-s"
+              alt=""
+              />
+              <div class="contente-2">
+                <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-9">
+                    <img src="@/assets/hand-house.png" alt="" style="
+                      /* float: left !important; */
+                      background-color: transparent;
+                      width: 100px;
+                      height: 100px;
+                    ">
+                    <h2><strong>Anuncie</strong> seu imóvel <strong>conosco</strong></h2>
+                    <p>Anunciar na Café é fácil e gratuito, 
+                      clique abaixo e convere com a gente.</p>
+                      <p>
+                        <a href="#" class="btn btn-success">quero anunciar</a>
+                      </p>
+                  </div>
+                </div>
+                </div>
             </div>
           </div>
           <div class="col-1"></div>
@@ -187,14 +227,21 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-sm-12 py-4 px-2" v-for="item in parapermuta" :key="item.id">
-            <div class="card para-permuta">
+            <div class="card para-permuta hero-container">
               <img :src="item.img" alt="" style="height: 100%; object-fit: cover;border-radius: 15px !important;">
+              <div class="mask"></div>
+                <div class="contente">
+                  <h2>{{ item.titulo }}</h2>
+                  <br>
+                  <p><a href="#" class="btn btn-success">ver mais</a></p>
+                </div>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
+  
 </template>
 <script>
 // import { ref } from 'vue';
@@ -379,8 +426,8 @@ export default {
   font-family: "Open Sans";
 }
 .green-card {
-  width: 638px;
-  height: 111px;
+  /* width: 638px; */
+  height: auto;
   border-radius: 40px;
   background-color: #05925b;
 }
@@ -423,7 +470,7 @@ export default {
   background-image: url('@assets');
 }
 .banner-container img{
-  filter: drop-shadow(0px 14px 20px rgba(0,0,0,0.45));
+  /* filter: drop-shadow(0px 14px 20px rgba(0,0,0,0.45)); */
   object-fit: none;
   top: 0;
   left: 0;
@@ -431,9 +478,70 @@ export default {
   height: 400px;
 }
 .para-permuta {
-  opacity: 0.722;
   height: 596px;
   border-radius: 15px;
-  background-color: #20372e;
+  /* background-color: #20372e; */
+}
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 596px;
+  overflow: hidden;
+}
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+}
+
+.contente {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  /* background-color: red; */
+  z-index: 1; /* Coloca o conteúdo acima da máscara */
+}
+.contente-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, -50%);
+  text-align: left;
+  color: white;
+  /* background-color: red; */
+  z-index: 1; /* Coloca o conteúdo acima da máscara */
+}
+
+.contente h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.contente p {
+  font-size: 1.2rem;
+}
+.whatsapp-button {
+  z-index: 1; /* Coloca acima de outros elementos */
+  background-color: transparent;
+  color: white;
+  /* padding: 10px 20px; */
+  border: 1px solid white;
+  border-radius: 15px;
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); */
+}
+
+.whatsapp-button a {
+  text-decoration: none;
+  color: white;
+}
+
+.whatsapp-button i {
+  margin-right: 10px;
 }
 </style>

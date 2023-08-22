@@ -42,9 +42,26 @@ import HomeView from "./views/HomeView.vue";
       </div>
     </div>
   </nav>
-  <div>
+  <div class="content">
     <HomeView />
   </div>
+  <footer class="footer">
+    <div class="row">
+      <div class="col-12 footer-logo col-md-12">
+        <center>
+          <img src="@/assets/logo.png" alt="Logo">
+        </center>
+      </div>
+      <div class="col-md-12">
+        <br />
+      </div>
+      <div class="col-12 footer-text col-md-12">
+        <p>Texto informativo 1</p>
+        <p>Texto informativo 2</p>
+        <p>Texto informativo 3</p>
+      </div>
+    </div>
+  </footer>
 </template>
 <script>
 export default {
@@ -79,5 +96,33 @@ navbar {
   width: 100%;
   height: 50px;
   transition: background-color 0.3s ease;
+}
+.content {
+  /* Defina as propriedades de layout conforme necessário */
+  margin-bottom: 150px; /* A altura aproximada do rodapé */
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 999; /* Certifique-se de que o rodapé esteja acima do conteúdo */
+  border-top: 15px solid green;
+}
+
+.footer-logo img {
+  /* max-width: 100px; */
+  text-align: center;
+}
+
+.footer-text {
+  text-align: center;
+  /* margin-left: 20px; */
 }
 </style>
